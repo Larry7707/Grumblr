@@ -23,10 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'e-$ub1qxbigla_)ig3_ty3$j$gc1#803sbur=%g^rq6jeh%@q6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [u"18.216.238.216"]
 
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -139,11 +140,11 @@ MEDIA_URL = '/grumblr/images/profile/'
 
 # Cofigures Django to merely print emails
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.live.com'
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'larry.l1@hotmail.com'
-EMAIL_HOST_PASSWORD = 'Lxl(31207'
+EMAIL_HOST_USER = 'larry.12.77.07@gmail.com'
+EMAIL_HOST_PASSWORD = 'lXl931207'
 EMAIL_SUBJECT_PREFIX = u'Grumblr'
-DEFAULT_FROM_EMAIL = 'Grumblr.xianlal<larry.l1@hotmail.com>'
+DEFAULT_FROM_EMAIL = 'Grumblr.xianlal<larry.12.77.07@gmail.com>'
 EMAIL_USE_TLS = True
 
