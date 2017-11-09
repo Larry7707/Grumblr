@@ -1,0 +1,68 @@
+{% extends "grumblr/global_page.html" %}
+{% load static from staticfiles %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<!-- Personal Infor -->
+<div class="container" type="pro">
+  <div class="row">
+  	<div class="col-md-4">
+  		<img src="{{ user.profile.image.url}}" class="profile">
+  	</div>
+  	<div class="col-md-8">
+  		<div class='row'>
+            {% if fullName %}
+            <h2 class = 'fullname'><b>{{fullName}}</b></h2>
+            {% else %}
+  		      <h2 class = 'fullname'><b>Larry Li</b></h2>
+            {% endif %}
+  		<h5 class="info">{{intro}}</h5>
+  		</div>
+  		<p class ='intro'>{{user1.profile.bio}}</p>
+  	</div>
+  </div>
+  <div class="row">
+	   <div class="col-md-4">
+	   <div class="box-pro">
+	       <ul>
+	       <li>
+	       <div class="row">
+    	   <img src="{%static 'grumblr/images/location_profile.png' %}" class = "icon-profile">
+    	   <p class="info"><b>Pittsburgh, US</b></p>
+           </div>
+  	       </li>
+	<li>
+	<div class="row">
+    	<img src="{%static 'grumblr/images/email.png' %}" class = "icon-profile">
+    	<p class="info"><b>{{user1.email}}</b></p>
+    </div>
+  	</li>
+	<li>
+	<div class="row">
+    	<img src="{%static 'grumblr/images/birthday.png' %}" class = "icon-profile">
+    	<p class="info"><b>December 7th</b></p>
+    </div>
+  	</li>
+  	<li>
+	<div class="row">
+    	<img src="{%static 'grumblr/images/tags.png' %}" class = "icon-profile">
+    	<p class="info"><b>Carnegie Mellon Universty,<br> NON-rapper, Leagure of <br>Legends</b></p>
+    </div>
+  	</li>
+	</ul>
+	</div>
+  </div>
+  <div class="col-md-8">
+  	<div class = 'box-1'>
+  		<h5><b>My Following Post</b></h5>
+  	</div>
+  	<br>
+  	<ul id="post-list">
+  	</ul>
+  </div>
+  </div>
+</div>
+{% endblock %}
+{% block jsfile %}
+    <script src="{% static 'grumblr/js/jquery-3.2.1.min.js' %} " type="text/javascript"></script>
+    <script src="{% static 'grumblr/js/grumblr_following.js' %}" type="text/javascript"></script>
+{% endblock %}

@@ -1,0 +1,1 @@
+{"id":{{post.id}}, "deleted":{{post.deleted|lower}}, "content": "{{post.content}}", "user": "{{post.user}}", "date": "{{post.date}}", "show_comment": {{post.show_comment|lower}},"html": "{{post.html}}"}

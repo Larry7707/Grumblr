@@ -1,0 +1,272 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!-- referred to url=(0050)https://getbootstrap.com/docs/4.0/examples/signin/ -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+
+    <title>{% block title %}Global{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'grumblr/css/login_page.css' %}">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Anonymous Pro">
+</head>
+
+<body>
+ <nav class="navbar navbar-expand-md navbar-defaut bg-defaut fixed-top">
+ 	  <a class="navbar-brand" href="#">
+ 	  	<img src="{% static 'grumblr/images/logo.png' %}" class ="logo-pro">
+ 	  </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse " id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+        <form class="form-inline mt-2 mt-md-0" method="post">
+          <input class="form-control" type="text" placeholder="Search GrumBlr" aria-label="Search">
+          	<img src ="{%static 'grumblr/images/Search.png' %}" class="icon-1">
+        </form>      
+        <ul class="navbar-nav" align = 'right'>
+          <li class="nav-item active">
+          	<a class="nav-link" href="{% url 'global' %}">
+            	<img src="{%static 'grumblr/images/homepage.png' %}" class='icon'>
+            <!-- <span class="sr-only">(current)</span></a> -->
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+            	<img src="{%static 'grumblr/images/Notification.png' %}" class = "icon">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'my_profile' %}">
+            	<img src="{%static 'grumblr/images/Personalinfo.png' %}" class = "icon">
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'my_following' %}">
+                <img src="{%static 'grumblr/images/myfollowing.png' %}" class = "icon">
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="{%static 'grumblr/images/setting.png' %}" class = "icon">
+              </a>
+              <div class="dropdown-menu" type="mytype" aria-labelledby="dropdown10">
+                <ul>
+                <li><a class="dropdown" href="{% url 'edit_profile' %}">Edit profile</a></li>
+                <li><a class="dropdown" href="{% url 'send_email' %}">Change password</a></li>
+                <li><a class="dropdown" href="{% url 'resend_email' %}">Resent email</a></li>
+                <li><a class="dropdown" href="{% url 'logout' %}">Logout</a></li>
+                <ul>
+              </div>
+          </li>
+<!--           <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">
+            	<img src="{%static 'grumblr/images/Logout.png' %}" class = "icon">
+            </a>
+          </li> -->
+        </ul>
+      </div>
+    </nav>
+    {% ifequal user1.profile.confirmed False %}
+        <p type="note">Please login your email to confirm your registration.</p>
+    {% endifequal %}
+   <!-- Personal Infor -->
+   {% block content %}
+    <div class="container">
+	    <div class="row">
+	    	<div class="col-md-4">
+            <!-- <h1> {{user.profile.confirmed}} </h1> -->
+            <ul>
+            <li>
+                <div class="box-profile">
+                <ul id="horizontal-list">
+                <div class = 'row'>
+                <li>
+	    		 <img src="{{ user.profile.image.url}}" alt="#" class="profile-global">
+                </li>
+                <li>
+                <ul>
+                 {% if fullName %}
+                 <a class="name"><font size="4"><b>{{fullName}}</b></font><br></a>
+                 {% else %}
+                 <a class="name"><font size="4"><b>Larry Li</b></font><br></a>
+                 {% endif %}
+                 <a class="name-info">{{follower_num}} Followers<br></a>
+                 <a class="name-info">{{following_num}} Following</p></a>
+                </ul>
+                </li>
+                </div>
+                </ul>
+                </div>
+            </li>
+            <br>
+            <li>
+                <div class="box-glo">
+                <ul>
+                <li>
+                    <h3><b>Trending</b></h3>
+                </li>
+                <li>
+                    <p class="info-global">#ConversePublicAccess</p>
+                </li>
+                <li>
+                    <p class="info-global">#AmericanHistory</p>
+                </li>
+                <li>
+                    <p class="info-global">#IrmaHurrican</p>
+                </li>
+                <li>
+                    <p class="info-global">#Destiny</p>
+                </li>
+                <li>
+                    <p class="info-global">#Larry</p>
+                </li>
+                <li>
+                    <p class="info-global">#Larry</p>
+                </li>
+                <li>
+                    <p class="info-global">#Larry</p>
+                </li>                
+                </ul>
+                </div>
+            </li>
+            <br>
+            <!-- Recent Friends start here -->
+            <li>
+                <div class="box-glo">
+                <h5>Recent Friends</h5>
+                <ul id="horizontal-list">
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>               
+                </ul>
+                </div>
+            </li>
+            <br>
+            <!-- Who to Follow starts here -->
+            <li>
+                <div class="box-glo">
+                <h5>Who to Follow</h5>
+                <ul id="horizontal-list">
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>
+                <li>
+                    <img src="{%static 'grumblr/images/profile.jpg' %}" class="post-profile">
+                </li>               
+                </ul>
+                </div>
+            </li>
+            </ul>
+	    	</div>
+
+            <!-- Global Post starts here -->
+	    	<div class="col-md-8">
+                {% ifequal user1.profile.confirmed True %}
+                <ul>
+                <li>
+                    <form method="post" id="new-post">
+                      {% csrf_token %}
+                        {% for field in form.visible_fields %}
+                            {{field}}
+                            {% if field.errors %}
+                            <p style="color: red">{{field.errors}}</p>
+                            {% endif %}
+                        {% endfor %}
+                        {% for field in form.hidden_fields %}
+                            {{field}}
+                            {% if field.errors %}
+                            <p style="color: red">{{field.errors}}</p>
+                            {% endif %}
+                        {% endfor %}
+<!--                       <input class="post" type="text" placeholder=" What's Happening?" aria-label="Post" name="content"> -->
+                      <!-- <button class="button" type="submit"> -->
+                      <button id="post-btn" class="button-glo" type="submit" align="right-post">Post</button>
+                      <!-- </button> -->
+                    </form>
+                </li>
+                <li>
+                {% for error in form.non_field_errors %}
+                    <p style="color: red">
+                        {{error}}
+                    </p>
+                {% endfor %}
+<!--                 {% if errors %}
+                {% for error in errors %}
+                    <p style="color: red">
+                        {{error}}
+                    </p>
+                {% endfor %}
+                {% endif %} -->
+                </li>
+                <li>
+                    <ul id="horizontal-list">
+                        <li>
+                            <img src="{%static 'grumblr/images/emoji.png' %}" class="icon-profile">
+                        </li>
+                        <li>
+                            <img src="{%static 'grumblr/images/photo.png' %}" class="icon-profile">
+                        </li>
+                        <li>
+                            <img src="{%static 'grumblr/images/video.png' %}" class="icon-profile">
+                        </li>
+                    </ul>
+                </li>
+                </ul>
+                <ul id="post-list"></ul>
+                {% endifequal %}
+	    	</div>
+	    </div>
+	    </div>
+    </div> 
+    {% endblock %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster --> 
+{% block jsfile %}  
+    <script src="{% static 'grumblr/js/jquery-3.2.1.min.js' %} " type="text/javascript"></script>
+    <script src="{% static 'grumblr/js/grumblr.js' %}" type="text/javascript"></script>
+{% endblock %}
+<!--     <script src="{% static 'grumblr/js/comment.js' %}" type="text/javascript"></script> -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    </body>
+</html>

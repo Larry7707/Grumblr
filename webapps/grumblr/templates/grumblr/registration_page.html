@@ -1,0 +1,32 @@
+{% extends "grumblr/login_page.html" %}
+{% load static from staticfiles %}
+{% block title %}Registration{% endblock %}
+
+
+{% block content1 %}
+<div class="box-reg">
+	<img src="{% static 'grumblr/images/logo.png' %}" class="logo">
+    {% for error in form.non_field_errors %}
+        <p style="color: red">
+            {{error}}
+        </p>
+    {% endfor %}
+	<form class="form-signin" method="POST">
+		{% for field in form.visible_fields %}
+			{{field}}
+			{% if field.errors %}
+			<p style="color: red">{{field.errors}}</p>
+			{% endif %}
+		{% endfor %}
+		{% for field in form.hidden_fields %}
+			{{field}}
+			{% if field.errors %}
+			<p style="color: red">{{field.errors}}</p>
+			{% endif %}
+		{% endfor %}
+		<button class="button1" type="submit">Start My GrumBlr</button>
+		{% csrf_token %}
+	</form>
+</div>
+{% endblock %}
+{% block content2 %}{% endblock %}

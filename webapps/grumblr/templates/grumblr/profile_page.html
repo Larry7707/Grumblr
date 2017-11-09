@@ -1,0 +1,126 @@
+{% extends "grumblr/global_page.html" %}
+{% load static from staticfiles %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<!-- Personal Infor -->
+<div class="container" type="pro">
+  <div class="row">
+  	<div class="col-md-4">
+  		<img src="{{ user.profile.image.url}}" class="profile-store-id" id="{{user.id}}">
+  	</div>
+  	<div class="col-md-8">
+  		<div class='row'>
+            {% if fullName %}
+            <h2 class = 'fullname'><b>{{fullName}}</b></h2>
+            {% else %}
+  		      <h2 class = 'fullname'><b>Larry Li</b></h2>
+            {% endif %}
+  		<h5 class="info">{{intro}}</h5>
+      {% ifequal isme False %}
+        {% ifequal followed True %}
+        <a href="{% url 'follow' user.id %}" >
+        <img src="{%static 'grumblr/images/followed.png' %}" class="icon-1">
+        </a>
+        {% else %}
+        <a href="{% url 'unfollow' user.id %}">
+        <img src="{%static 'grumblr/images/add.png' %}" class="icon-1">
+        </a>
+        {% endifequal %}
+      <img src="{%static 'grumblr/images/message.png' %}" class='icon-1'>
+      {% endifequal %}
+  		</div>
+  		<p class ='intro'>{{bio}}</p>
+  	</div>
+  </div>
+  <div class="row">
+	   <div class="col-md-4">
+	   <div class="box-pro">
+	       <ul>
+	       <li>
+	       <div class="row">
+    	   <img src="{%static 'grumblr/images/location_profile.png' %}" class = "icon-profile">
+    	   <p class="info"><b>Pittsburgh, US</b></p>
+           </div>
+  	       </li>
+	<li>
+	<div class="row">
+    	<img src="{%static 'grumblr/images/email.png' %}" class = "icon-profile">
+    	<p class="info"><b>{{user.email}}</b></p>
+    </div>
+  	</li>
+	<li>
+	<div class="row">
+    	<img src="{%static 'grumblr/images/birthday.png' %}" class = "icon-profile">
+    	<p class="info"><b>December 7th</b></p>
+    </div>
+  	</li>
+  	<li>
+	<div class="row">
+    	<img src="{%static 'grumblr/images/tags.png' %}" class = "icon-profile">
+    	<p class="info"><b>Carnegie Mellon Universty,<br> NON-rapper, Leagure of <br>Legends</b></p>
+    </div>
+  	</li>
+	</ul>
+	</div>
+  </div>
+  <div class="col-md-8">
+  	<div class = 'box-1'>
+  		<h5><b>His/Her GrumBlr</b></h5>
+  	</div>
+  	<br>
+  	<ul id="post-list">
+<!--             {% for post in posts %}
+            <li>
+                <div class="post-box">
+                  <ul id="horizontal-list">
+                    <li>
+                     <a href="{% url 'profile' post.user.id %}">
+                      <img src="{{ user.profile.image.url}}" class="post-profile">
+                     </a>
+                    </li>
+                    <li>
+                      <a href="{% url 'profile' post.user.id %}">
+                      <font size="4"><b>{{post.get_name}}</b></font>
+                      </a>
+                    </li>
+                    <li><span style="display: inline-block;width: 100px"></li>
+                    <li>
+                      <img src="{%static 'grumblr/images/location_post.png' %}" class = 'icon-profile'>
+                    </li>
+                    <li>
+                      <a><font size='3' color="grey">Pittsburgh</font></a>
+                    </li>
+                    <li>
+                      <a><font size='3' color="grey">{{post.date}}</font></a>
+                    </li>
+                    {% ifequal isme True %}   
+                    <li>
+                      <a href="{% url 'delete_post' post.id %}">
+                      <img src="{%static 'grumblr/images/deletepost.png' %}" class = 'icon-profile' align="right" type="delete">
+                      </a>
+                    </li>
+                    {% endifequal %}                   
+                  </ul>
+                  <p><font size='4' color="black">{{post.content}}</font></p>
+                  <ul id="horizontal-list" align = 'right' class = 'right-post'>
+                    <li>
+                        <img src="{%static 'grumblr/images/share.png' %}" class = 'post-like'>
+                    </li>
+                        <img src="{%static 'grumblr/images/comment.png' %}" class = 'post-like'>
+                    <li>
+                        <img src="{%static 'grumblr/images/like.png' %}" class = 'post-like'>
+                    </li>
+                  </ul>
+                </div>
+            </li>
+            <br>
+            {% endfor %} -->
+  	</ul>
+  </div>
+  </div>
+</div>
+{% endblock %}
+{% block jsfile %}
+    <script src="{% static 'grumblr/js/jquery-3.2.1.min.js' %} " type="text/javascript"></script>
+    <script src="{% static 'grumblr/js/grumblr_profile.js' %}" type="text/javascript"></script>
+{% endblock %}

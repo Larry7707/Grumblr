@@ -1,0 +1,75 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!-- referred to url=(0050)https://getbootstrap.com/docs/4.0/examples/signin/ -->
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width = device-width, initial-scale = 1">
+
+		<title>{% block title %}Log In{% endblock %}</title>
+
+    	<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    	
+    	<!-- Custom styles for this template -->
+		<link rel="stylesheet" href="{% static 'grumblr/css/login_page.css' %}">
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Anonymous Pro">
+	</head>
+
+	<body>	
+	    <div class="container">
+		    <div class="row">
+		    	<div class="col-md-6">
+		    		<h1>Welcome to GrumBlr.</h1>
+		    		<h1>欢迎来到格朗博。</h1>
+		    		<h1>We've been waiting for long.</h1>
+		    		<h1>恭候多时了。</h1>
+		    		<img src="{% static 'grumblr/images/logo.png' %}" class="full-logo">
+		    	</div>
+		    	<div class="col-md-6">
+		    		<!-- <form method="post" class="form-signin" > -->
+		    		{% block content1 %}
+			    	<div class="box">
+			    		<img src="{% static 'grumblr/images/logo.png' %}" class = 'logo'>
+
+			    		{% if form.errors %}
+				        <p style="color:red">
+				            Incorrect user name and password.
+				        </p>
+    					{% endif %}
+		      			<form class="form-signin" name='login' method="post" action="{% url 'login' %}">
+		      				{% csrf_token %}
+				        	<label for="inputEmail" class="sr-only">{{form.username.label_tag}}</label>
+				        	<input type="username" id="inputUsername" name="username" class="form-control" placeholder="Username" required="" autofocus="" value={{username}}>
+				        	
+				        	<label for="inputPassword" class="sr-only">{{form.password.label_tag}}</label>
+				        	<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="" value={{password}}>
+				        	<button class="button" type="submit">Go To My Grumblr</button>
+				        	<input type="hidden" name="next" value="{{ next }}">
+	 		     		</form>
+			     		 <a style="text-align:right" class="nav-link" href="#"><font size="3"><ul>Forgot your password?</ul></font></a>
+			      	</div>
+     				{% endblock %}
+			      	<br>
+			      	{% block content2 %}
+			      	<div class="box">
+			      		<ul id="horizontal-list">
+		      				<form method='get' action="{% url 'registration' %}">
+			     			<li><a class="text-1"><font size="4">First time here?</font></a></li>
+			     			<!-- <li><span style="display:inline-block;width:px;"></span></li> -->
+			     			<li>
+			     				<button class="button2" type="submit">
+			     				<p>Sign Up NoW!</p>
+			     				</button>
+			     			</li>
+			     			</form>
+			     		</ul>
+			      	</div>
+			      	{% endblock %}
+			      <!-- </form> -->
+		      	</div>
+		    </div>
+	    </div> <!-- /container -->
+	</body>
+</html>
