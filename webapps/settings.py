@@ -140,11 +140,12 @@ MEDIA_URL = '/grumblr/images/profile/'
 
 # Cofigures Django to merely print emails
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'larry.12.77.07@gmail.com'
-EMAIL_HOST_PASSWORD = 'lXl931207'
-EMAIL_SUBJECT_PREFIX = u'Grumblr'
-DEFAULT_FROM_EMAIL = 'Grumblr.xianlal<larry.12.77.07@gmail.com>'
+EMAIL_HOST_USER = 'larry.l1@hotmail.com'
+EMAIL_HOST_PASSWORD = 'Lxl(31207'
+# EMAIL_SUBJECT_PREFIX = u'Grumblr'
+DEFAULT_FROM_EMAIL = 'Grumblr.xianlal<larry.l1@hotmail.com>'
 EMAIL_USE_TLS = True
+# EMAIL_USE_SSL = True
 

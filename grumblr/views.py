@@ -298,7 +298,7 @@ def registration(request):
          reverse('confirmation', args=(new_user.id, token)))
     send_mail(subject="Verify your email address.Grumblr",
             message = email_body,
-            from_email="larry.12.77.07@gmail.com",
+            from_email="larry.l1@hotmail.com",
             recipient_list=[new_user.email])
     # print(2)
     return redirect('global')
@@ -339,7 +339,7 @@ def send_change_email(request):
          reverse('change_password', args=(request.user.username, token)))
     send_mail(subject="Change your password.Grumblr",
             message = email_body,
-            from_email="larry.12.77.07@gmail.com",
+            from_email="larry.l1@hotmail.com",
             recipient_list=[request.user.email])
     info = "Email has been sent. Please login your email to change your password"
     return render(request, "grumblr/send_email.html", {"info":info})
@@ -354,7 +354,7 @@ def send_confirm_email(request):
          reverse('confirmation', args=(request.user.id, token)))
     send_mail(subject="Verify your email address.Grumblr",
             message = email_body,
-            from_email="larry.12.77.07@gmail.com",
+            from_email="larry.l1@hotmail.com",
             recipient_list=[request.user.email])
     return redirect('global')
 
