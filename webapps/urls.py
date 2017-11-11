@@ -54,5 +54,4 @@ urlpatterns = [
     # url(r'^get_posts/(?P<time>.+)$', views1.get_posts),
     # url(r'^get_changes/?$', views1.get_changes),
     # url(r'^get_changes/(?P<time>.+)$', views1.get_changes),
-]
-urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

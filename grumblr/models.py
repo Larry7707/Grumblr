@@ -63,8 +63,8 @@ class Profile(models.Model):
     following = models.ManyToManyField('Profile', related_name = "followed",
                                         symmetrical=False)
     image = models.ImageField(max_length=500,
-                              upload_to = 'grumblr/static/grumblr/images/profile', 
-                              default = 'grumblr/static/grumblr/images/profile/default.png')
+                              upload_to = 'profile', 
+                              default = 'profile/default.png')
     def __unicode__(self):
         ans ="user: %s\n age: %d \n bio: %s" % (self.user, self.age, self.bio)
         return ans

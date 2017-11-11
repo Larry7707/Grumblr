@@ -132,11 +132,11 @@ STATICFILES_DIRS = (
 )
 
 MEDIA_ROOT = (
-    BASE_DIR
+    os.path.join(BASE_DIR,"webapps/media")
 )
 
 
-MEDIA_URL = '/grumblr/images/profile/'
+MEDIA_URL = '/media/'
 
 # Cofigures Django to merely print emails
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
