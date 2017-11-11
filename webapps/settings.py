@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'e-$ub1qxbigla_)ig3_ty3$j$gc1#803sbur=%g^rq6jeh%@q6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [u"18.216.238.216"]
 
@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'webapps.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'grumblr',
+        'NAME': 'grumblr1',
 	'USER':'root',
 	'PASSWORD':'Lxl(31207',
     }
